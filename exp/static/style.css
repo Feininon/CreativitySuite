@@ -1,0 +1,199 @@
+/* --- General Body and Font Styles --- */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #1c1e21;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+/* --- Main Container for All Pages --- */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* --- Styles for the Index/Menu Page --- */
+.menu-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.menu-container {
+    text-align: center;
+    max-width: 600px;
+}
+
+.menu-container p {
+    color: #606770;
+    margin-bottom: 30px;
+}
+
+.tool-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.tool-card {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-color: #007bff;
+}
+
+.tool-card h2 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+}
+
+.tool-card span {
+    font-size: 14px;
+    color: #606770;
+}
+
+/* --- Styles for Generator Pages (SVG & ASCII) --- */
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+h1 { text-align: center; }
+
+h2 {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    min-height: 60px;
+    box-sizing: border-box; /* Important for padding and width */
+}
+
+button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+/* Specific button colors */
+.btn-svg { background-color: #007bff; }
+.btn-svg:hover { background-color: #0056b3; }
+
+.btn-ascii { background-color: #28a745; }
+.btn-ascii:hover { background-color: #1e7e34; }
+
+
+.loader {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.output-area {
+    margin-top: 30px;
+}
+
+#svg-output {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+#ascii-output {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    min-height: 300px;
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre;
+    overflow-x: auto;
+}
+
+/* --- Styles for Comic Generator --- */
+.comic-page {
+    border: 2px solid #333;
+    padding: 10px;
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+    background: #fff;
+}
+
+.comic-panel {
+    border: 1px solid #999;
+    background: #fdfdfd;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-image {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    background: #f0f0f0;
+}
+
+.panel-image svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.caption {
+    background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
+    padding: 8px;
+    font-style: italic;
+    font-size: 0.9em;
+    margin: 0;
+}
+
+.dialogue {
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    padding: 8px;
+    font-size: 0.95em;
+    margin: 0;
+}
