@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SVG Art generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <a href="/">&larr; Back to Menu</a>
+    <h1>SVG Art Generator</h1>
+    
+    <form id="art-form">
+        <textarea id="prompt" placeholder="e.g., a happy sun, a green tree" required></textarea>
+        <div class="buttons">
+            <button type="submit" class="btn-svg">Generate SVG</button>
+        </div>
+    </form>
+
+    <div class="loader" id="loader">Loading...</div>
+
+    <div class="output-area">
+        <div id="art-output">Your Generated SVG will appear here.</div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('art-form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const prompt = document.getElementById('prompt').value.trim();
+        if (!prompt) return;
+
+        const loader = document.getElementById('loader');
+        const outputDiv = document.getElementById('art-output');
+        
+        loader.style.display = 'block';
+        outputDiv.innerHTML = '';
+
+        try {
+            const response = await fetch('/retrieve-art', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt: prompt, type: 'svg' }) // Type is hardcoded
+            });
+            const result = await response.json();
+            if (result.error) throw new Error(result.error);
+            
+            outputDiv.innerHTML = result.code;
+
+        } catch (error) {
+            console.error('Error:', error);
+            outputDiv.textContent = `Error: ${error.message}`;
+        } finally {
+            loader.style.display = 'none';
+        }
+    });
+</script>
+</body>
+</html>

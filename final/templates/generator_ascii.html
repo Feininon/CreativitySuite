@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASCII Art generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <a href="/">&larr; Back to Menu</a>
+    <h1>ASCII Art Generator</h1>
+    
+    <form id="art-form">
+        <textarea id="prompt" placeholder="e.g., a friendly cat, a rocket ship" required></textarea>
+        <div class="buttons">
+            <button type="submit" class="btn-ascii">Generate ASCII Art</button>
+        </div>
+    </form>
+
+    <div class="loader" id="loader">Loading...</div>
+
+    <div class="output-area">
+        <div id="art-output">Your ASCII art will appear here.</div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('art-form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const prompt = document.getElementById('prompt').value.trim();
+        if (!prompt) return;
+
+        const loader = document.getElementById('loader');
+        const outputDiv = document.getElementById('art-output');
+        
+        loader.style.display = 'block';
+        outputDiv.innerHTML = '';
+
+        try {
+            const response = await fetch('/retrieve-art', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt: prompt, type: 'ascii' }) // Type is hardcoded
+            });
+            const result = await response.json();
+            if (result.error) throw new Error(result.error);
+            
+            const pre = document.createElement('pre');
+            pre.id = 'ascii-output';
+            pre.textContent = result.code;
+            outputDiv.appendChild(pre);
+
+        } catch (error) {
+            console.error('Error:', error);
+            outputDiv.textContent = `Error: ${error.message}`;
+        } finally {
+            loader.style.display = 'none';
+        }
+    });
+</script>
+</body>
+</html>
