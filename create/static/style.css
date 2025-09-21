@@ -1,202 +1,209 @@
+/* static/style.css - Dynamic Glass Theme */
 
-:root {
-    --text-color: #0b0f24;
-    --heading-color: #040615;
-    --subtle-text: #4a4a6a;
-    --border-color: rgba(255, 255, 255, 0.25);
-    --shadow-color: rgba(31, 38, 135, 0.15);
-    --font-family: 'Poppins', sans-serif;
-    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-body {
-    font-family: var(--font-family);
-    color: var(--text-color);
-    margin: 0;
-    padding: 2rem;
-    min-height: 100vh;
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-}
-
+/* --- Keyframes for Animated Background --- */
 @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* --- The Glass Container --- */
+/* --- Base & Body Styles --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #ffffff;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+/* --- Main Container --- */
 .container {
     width: 100%;
     max-width: 900px;
-    margin: auto 0;
-    background: rgba(255, 255, 255, 0.15);
+    padding: 2rem 3rem;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px); /* For Safari */
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 20px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 8px 32px 0 var(--shadow-color);
-    padding: 2rem 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
 }
 
-/* --- Typography --- */
-h1, h2 {
+/* --- Typography and Links --- */
+h1 {
     text-align: center;
-    color: var(--heading-color);
-    font-weight: 700;
+    margin-top: 0;
+    color: #fff;
 }
-
-h1 { font-size: 2.8rem; margin-bottom: 0.5rem; }
-p { color: var(--subtle-text); text-align: center; margin-bottom: 2.5rem; }
-a { color: #5a189a; text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
-a:hover { color: #e73c7e; }
-.back-link { display: inline-block; margin-bottom: 1.5rem; }
-
-/* --- Main Menu (index.html) --- */
-.menu-container .tool-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.tool-card {
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid var(--border-color);
-    padding: 2rem;
-    border-radius: 16px;
+p {
     text-align: center;
-    transition: background 0.3s ease, transform 0.3s ease;
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
-
-.tool-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    background: rgba(255, 255, 255, 0.4);
+a {
+    transition: color 0.2s;
+    color: #f0f0f0;
 }
-
-.tool-card h2 { margin: 0; font-size: 1.25rem; }
+a:hover {
+    color: #ffffff;
+}
+.back-link {
+    display: block;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    text-decoration: none;
+}
 
 /* --- Forms & Buttons --- */
-form { display: flex; flex-direction: column; gap: 1rem; }
-
 textarea {
     width: 100%;
-    min-height: 80px;
+    min-height: 100px;
     padding: 1rem;
     font-size: 1rem;
-    font-family: var(--font-family);
-    background: rgba(255, 255, 255, 0.4);
-    color: var(--text-color);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
     box-sizing: border-box;
+    margin-bottom: 1.5rem;
     resize: vertical;
-    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 8px;
 }
-
-textarea:focus {
-    outline: none;
-    border-color: rgba(255, 255, 255, 0.8);
-    background: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }
-
 button {
+    width: 100%;
     padding: 1rem;
     font-size: 1.1rem;
     font-weight: 600;
-    font-family: var(--font-family);
     cursor: pointer;
-    border: none;
-    border-radius: 12px;
-    color: white;
-    background: var(--primary-gradient);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+    color: #4a027a;
+    border: none;
+    border-radius: 8px;
 }
-
 button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-    filter: brightness(1.1);
+    background: #ffffff;
+    transform: scale(1.02);
 }
 
-button:active { transform: translateY(0); }
-
-/* --- Loader Animation --- */
-.loader { display: none; text-align: center; margin: 2.5rem 0; }
-.loader p { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.5rem; color: var(--heading-color); }
-.loader small { font-size: 0.9rem; color: var(--subtle-text); }
-.loader::before {
-    content: ''; display: block; margin: 0 auto 1.5rem auto;
-    width: 50px; height: 50px;
-    border: 5px solid rgba(0,0,0,0.1);
-    border-top-color: #764ba2;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+/* --- Loader & Output Areas --- */
+.loader {
+    text-align: center;
+    padding: 2rem;
+    display: none; /* Hidden by default */
 }
-@keyframes spin { to { transform: rotate(360deg); } }
-
-/* --- Output Areas --- */
-.output-area { margin-top: 2.5rem; }
-#art-output {
-    border: 1px solid var(--border-color);
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    min-height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.output-area {
+    margin-top: 2rem;
     padding: 1rem;
-}
-#art-output svg { max-width: 100%; height: auto; }
-#ascii-output {
-    background-color: #1a1a2e;
-    color: #e3e3e3;
-    font-family: 'Courier New', monospace;
-    white-space: pre;
-    padding: 1.5rem;
-    width: 100%;
-    box-sizing: border-box;
+    min-height: 100px;
+    background: rgba(0, 0, 0, 0.15);
     border-radius: 12px;
+}
+#art-output svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+#ascii-output {
+    white-space: pre;
+    text-align: left;
     overflow-x: auto;
-    border: 1px solid rgba(255,255,255,0.1);
+    line-height: 1.2;
+    font-size: 0.9rem;
+    font-family: 'IBM Plex Mono', monospace;
 }
 
-/* --- Comic Generator Specific Styles --- */
-#comic-title {
-    margin-bottom: 2rem;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 1rem;
+/* --- Tool Grid (Menu Page) --- */
+.tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.tool-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    padding: 2rem;
+    min-height: 160px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 16px;
+    color: #ffffff;
+}
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.tool-card h2 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* --- Comic Generator Styles --- */
+#comic-output {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 .comic-page {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    padding: 1rem 0;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
 }
 .comic-panel {
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 12px var(--shadow-color);
+    gap: 0.5rem;
 }
 .panel-image {
     width: 100%;
-    padding-top: 100%;
-    position: relative;
+    aspect-ratio: 1 / 1;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.2);
 }
 .panel-image img {
-    position: absolute; top: 0; left: 0;
-    width: 100%; height: 100%; object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .caption, .dialogue {
-    padding: 1rem; margin: 0; text-align: left;
-    font-size: 0.95rem; color: var(--text-color);
-    background: rgba(255, 255, 255, 0.3);
+    padding: 0.75rem;
+    margin: 0;
+    text-align: left;
 }
-.caption { font-style: italic; }
+.caption {
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+}
+.dialogue {
+    background: #5a189a;
+    border-radius: 12px;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .tool-grid { grid-template-columns: 1fr; }
+    .container { padding: 1.5rem; }
+}
